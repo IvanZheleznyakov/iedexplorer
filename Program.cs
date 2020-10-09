@@ -59,8 +59,10 @@ namespace IEDExplorer
             Env env = new Env();
             Application.Run(new Views.MainWindow());
 
-            List<string> natives = new List<string>();
-            natives.Add(filename2);
+            List<string> natives = new List<string>
+            {
+                filename2
+            };
             //natives.Add(filename4);
 
             foreach (string filename in natives)
