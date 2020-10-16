@@ -30,7 +30,7 @@ using System.Windows.Forms;
 
 namespace IEDExplorer
 {
-    class Scsm_MMS_Worker
+    public class Scsm_MMS_Worker
     {
         private Thread _workerThread;
         private bool _run;
