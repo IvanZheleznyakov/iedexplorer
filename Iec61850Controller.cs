@@ -57,7 +57,7 @@ namespace IEDExplorer
 
         public void GetFile(NodeFile nfi)
         {
-            CommAddress ad = new CommAddress();
+         /*   CommAddress ad = new CommAddress();
             NodeBase[] ndarr = new NodeBase[1];
             ndarr[0] = nfi;
 
@@ -73,7 +73,7 @@ namespace IEDExplorer
               }
             }
             nfi.Reset();
-            iecs.Send(ndarr, ad, ActionRequested.OpenFile);
+            iecs.Send(ndarr, ad, ActionRequested.OpenFile);*/
         }
 
         public void FileDelete(NodeFile nfi)

@@ -57,7 +57,7 @@ namespace IEDExplorer
             Application.SetCompatibleTextRenderingDefault(false);
 
             Env env = new Env();
-            Application.Run(new Views.MainWindow());
+        //    Application.Run(new Views.MainWindow());
 
       /*      List<string> natives = new List<string>
             {

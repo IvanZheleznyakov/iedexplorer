@@ -82,10 +82,10 @@ namespace IEDExplorer
                 logger.LogInfo(String.Format("Communication to hostname = {0}, port = {1} stopped.", isoParameters.hostname, isoParameters.port));
             }
 
-            _env.winMgr.mainWindow.BeginInvoke((Action)delegate
-            {
-                _env.winMgr.mainWindow.Stop();
-            });
+            //_env.winMgr.mainWindow.BeginInvoke((Action)delegate
+            //{
+            //    _env.winMgr.mainWindow.Stop();
+            //});
         }
 
         public void SendCommand(Iec61850lStateEnum c)
@@ -102,7 +102,7 @@ namespace IEDExplorer
             iecs.port = self.isoParameters.port;            // due to tcps inheritance
             iecs.cp = self.isoParameters;
             iecs.logger = Logger.getLogger();
-            _env.winMgr.BindToCapture(iecs);
+            //_env.winMgr.BindToCapture(iecs);
 
             _waitHandles[0] = iecs.connectDone;
             _waitHandles[1] = iecs.receiveDone;
@@ -225,9 +225,9 @@ namespace IEDExplorer
                                     case Iec61850lStateEnum.IEC61850_MAKEGUI:
                                         iecs.logger.LogDebug("[IEC61850_MAKEGUI]");
                                         iecs.DataModel.BuildIECModelFromMMSModel();
-                                        self._env.winMgr.MakeIedTree(iecs);
-                                        self._env.winMgr.MakeIecTree(iecs);
-                                        self._env.winMgr.mainWindow.Set_iecf(iecs);
+                                        //self._env.winMgr.MakeIedTree(iecs);
+                                        //self._env.winMgr.MakeIecTree(iecs);
+                                        //self._env.winMgr.mainWindow.Set_iecf(iecs);
                                         iecs.istate = Iec61850lStateEnum.IEC61850_FREILAUF;
                                         break;
                                     case Iec61850lStateEnum.IEC61850_FREILAUF:
@@ -235,8 +235,8 @@ namespace IEDExplorer
                                         switch (iecs.fstate)
                                         {
                                             case FileTransferState.FILE_DIRECTORY:
-                                                if (iecs.lastFileOperationData[0] is NodeIed)
-                                                    self._env.winMgr.MakeFileTree(iecs);
+                                                //if (iecs.lastFileOperationData[0] is NodeIed)
+                                                //    self._env.winMgr.MakeFileTree(iecs);
                                                 iecs.fstate = FileTransferState.FILE_NO_ACTION;
                                                 break;
                                             case FileTransferState.FILE_OPENED:
@@ -331,15 +331,15 @@ namespace IEDExplorer
                 }
             }
             TcpRw.StopClient(iecs);
-            _env.winMgr.UnBindFromCapture(iecs);
+            //_env.winMgr.UnBindFromCapture(iecs);
             if(restart_allowed) {
                 restart_allowed = false;
                 try
                 {
-                    _env.winMgr.mainWindow.BeginInvoke((Action)delegate
-                    {
-                        _env.winMgr.mainWindow.Restart();
-                    });
+                    //_env.winMgr.mainWindow.BeginInvoke((Action)delegate
+                    //{
+                    //    _env.winMgr.mainWindow.Restart();
+                    //});
                 }
                 catch { }
             }

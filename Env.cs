@@ -22,14 +22,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using IEDExplorer.Views;
+//using IEDExplorer.Views;
 
 namespace IEDExplorer
 {
     public class Env
     {
         public Logger logger;
-        public WindowManager winMgr;
+     //   public WindowManager winMgr;
         /// <summary>
         /// Flag to read data on startup.
         /// </summary>
