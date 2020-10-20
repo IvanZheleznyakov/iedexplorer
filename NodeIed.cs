@@ -62,12 +62,22 @@ namespace IEDExplorer
                 }
                 else
                 {
-                    string[] parts = IecAddress.Split(new char[] { '$' });
-                    for (int i = 0; i < parts.Length; i++)
+                    if (Name == "urcbs" || Name == "brcbs")
                     {
-                        if ((b = b.FindChildNode(parts[i])) == null)
+                        if ((b = b.FindChildNode(IecAddress)) == null)
                         {
                             return null;
+                        }
+                    }
+                    else
+                    {
+                        string[] parts = IecAddress.Split(new char[] { '$' });
+                        for (int i = 0; i < parts.Length; i++)
+                        {
+                            if ((b = b.FindChildNode(parts[i])) == null)
+                            {
+                                return null;
+                            }
                         }
                     }
                 }
@@ -85,6 +95,25 @@ namespace IEDExplorer
                 return FindNodeByAddress(parts[0], parts[1], FindList);
             return null;
         }
+
+        //public NodeBase FindRCBNodeByAddress(string domain, string iecAdress, bool isListFound = false)
+        //{
+
+        //}
+
+        //public NodeBase FindRCBNodeByAddress(string completeIecAddress, bool isListFound = false)
+        //{
+        //    if (completeIecAddress == null)
+        //    {
+        //        return null;
+        //    }
+        //    string[] parts = completeIecAddress.Split(new char[] { '/' }, 2);
+        //    if (parts.Length == 2)
+        //    {
+        //        return null;
+        //    }
+        //    return null;
+        //}
 
         public Iec61850State iecs { get; set; }
 
