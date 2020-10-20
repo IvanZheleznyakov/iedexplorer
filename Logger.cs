@@ -53,7 +53,8 @@ namespace IEDExplorer
             {
                 tmpFile = /*Path.Combine(Path.GetTempPath(),*/ "MMS_log_file.txt";
                 stream = new FileStream(tmpFile, FileMode.Create, FileAccess.Write, FileShare.Read);
-                writer = new StreamWriter(stream);
+                //  writer = new StreamWriter(stream);
+                writer = Console.Out;
                 sLog = this;
             }
             catch { }

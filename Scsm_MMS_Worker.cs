@@ -97,11 +97,13 @@ namespace IEDExplorer
         {
             Scsm_MMS_Worker self = (Scsm_MMS_Worker)obj;
 
-            iecs = new Iec61850State();
-            iecs.hostname = self.isoParameters.hostname;    // due to tcps inheritance
-            iecs.port = self.isoParameters.port;            // due to tcps inheritance
-            iecs.cp = self.isoParameters;
-            iecs.logger = Logger.getLogger();
+            iecs = new Iec61850State
+            {
+                hostname = self.isoParameters.hostname,    // due to tcps inheritance
+                port = self.isoParameters.port,            // due to tcps inheritance
+                cp = self.isoParameters,
+                logger = Logger.getLogger()
+            };
             //_env.winMgr.BindToCapture(iecs);
 
             _waitHandles[0] = iecs.connectDone;
