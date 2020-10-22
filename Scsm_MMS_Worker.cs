@@ -41,6 +41,12 @@ namespace IEDExplorer
         public Iec61850State iecs;
         Logger logger = Logger.getLogger();
 
+        public delegate void ConnectShutDowned();
+        public event ConnectShutDowned ConnectShutDownedEvent;
+
+        public delegate void InitEnd(Scsm_MMS_Worker worker);
+        public event InitEnd InitEndEvent;
+
         public Scsm_MMS_Worker()
         {
             _env = Env.getEnv();
@@ -49,7 +55,7 @@ namespace IEDExplorer
         public int Start(IsoConnectionParameters par)
         {
             isoParameters = par;
-            restart_allowed = true;
+            restart_allowed = false;
             return Start();
         }
 
@@ -70,7 +76,7 @@ namespace IEDExplorer
 
         public void Stop()
         {
-            Stop(true);
+            Stop(false);
         }
         public void Stop(bool restart_enable)
         {
@@ -130,9 +136,11 @@ namespace IEDExplorer
                         break;
                     case TcpProtocolState.TCP_STATE_SHUTDOWN:
                         iecs.logger.LogInfo("[TCP_STATE_SHUTDOWN]");
+                        ConnectShutDownedEvent?.Invoke();
                         Stop();
                         Thread.Sleep(10000);
-                        iecs.tstate = TcpProtocolState.TCP_STATE_START;
+                        //      iecs.tstate = TcpProtocolState.TCP_STATE_START;
+                        iecs.tstate = TcpProtocolState.TCP_CONNECT_WAIT;
                         break;
                     case TcpProtocolState.TCP_CONNECTED:
                         switch (iecs.ostate)
@@ -227,6 +235,7 @@ namespace IEDExplorer
                                     case Iec61850lStateEnum.IEC61850_MAKEGUI:
                                         iecs.logger.LogDebug("[IEC61850_MAKEGUI]");
                                         iecs.DataModel.BuildIECModelFromMMSModel();
+                                        InitEndEvent?.Invoke(this);
                                         //self._env.winMgr.MakeIedTree(iecs);
                                         //self._env.winMgr.MakeIecTree(iecs);
                                         //self._env.winMgr.mainWindow.Set_iecf(iecs);
