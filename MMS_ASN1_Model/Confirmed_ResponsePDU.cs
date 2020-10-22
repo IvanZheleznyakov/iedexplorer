@@ -66,7 +66,7 @@ namespace MMS_ASN1_Model {
             	
             }
 
-
+        // STATICHERE
             private static IASN1PreparedElementData preparedData = CoderFactory.getInstance().newPreparedElementData(typeof(Confirmed_ResponsePDU));
             public IASN1PreparedElementData PreparedData {
             	get { return preparedData; }

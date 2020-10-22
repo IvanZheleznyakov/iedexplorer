@@ -6,7 +6,7 @@
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{A9833FBF-9183-4D5E-8D5B-A4CBCD65D811}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IEDExplorer</RootNamespace>
     <AssemblyName>IEDExplorer</AssemblyName>
@@ -166,52 +166,7 @@
   <ItemGroup>
     <Compile Include="ActionRequested.cs" />
     <Compile Include="BNExtension\XMLEncoder.cs" />
-    <Compile Include="Dialogs\ControllableSignalsDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dialogs\ControllableSignalsDialog.designer.cs">
-      <DependentUpon>ControllableSignalsDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Dialogs\FindForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dialogs\FindForm.Designer.cs">
-      <DependentUpon>FindForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Dialogs\Place.cs" />
-    <Compile Include="Dialogs\Wildcard.cs" />
     <Compile Include="ExportListViewToCSV.cs" />
-    <Compile Include="Goose\ExportGooseToXml.cs" />
-    <Compile Include="Goose\ExportGvlToXml.cs" />
-    <Compile Include="Goose\GooseControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Goose\GooseControl.Designer.cs">
-      <DependentUpon>GooseControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Goose\GooseData.cs" />
-    <Compile Include="Goose\GooseDataeEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Goose\GooseDataeEdit.Designer.cs">
-      <DependentUpon>GooseDataeEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Goose\GooseExplorer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Goose\GooseExplorer.Designer.cs">
-      <DependentUpon>GooseExplorer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Goose\GooseSender.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Goose\GooseSender.Designer.cs">
-      <DependentUpon>GooseSender.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Goose\GooseTreeViewMgmt.cs" />
-    <Compile Include="Goose\ImportDataListFromXml.cs" />
-    <Compile Include="Goose\ImportGooseFromXml.cs" />
-    <Compile Include="Goose\SeqData.cs" />
     <Compile Include="Goose_ASN1_Model\Data.cs" />
     <Compile Include="Goose_ASN1_Model\DataSequence.cs" />
     <Compile Include="Goose_ASN1_Model\FloatingPoint.cs" />
@@ -221,6 +176,7 @@
     <Compile Include="Goose_ASN1_Model\MMSString.cs" />
     <Compile Include="Goose_ASN1_Model\TimeOfDay.cs" />
     <Compile Include="Goose_ASN1_Model\UtcTime.cs" />
+    <Compile Include="Iec61850Controller.cs" />
     <Compile Include="MyTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -228,12 +184,6 @@
     <Compile Include="NodeGVL.cs" />
     <Compile Include="SCLParserDOM2.cs" />
     <Compile Include="NodeVLM.cs" />
-    <Compile Include="Dialogs\AutoUpdateStoppedDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dialogs\AutoUpdateStoppedDialog.Designer.cs">
-      <DependentUpon>AutoUpdateStoppedDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="EmbeddedAssembly.cs" />
     <Compile Include="IEC61850.Server\DataAttribute.cs" />
     <Compile Include="IEC61850.Server\DataObject.cs" />
@@ -247,19 +197,7 @@
     <Compile Include="IEC61850.Server\ReportControlBlock.cs" />
     <Compile Include="IEC61850.Server\SettingGroupControlBlock.cs" />
     <Compile Include="IEC61850.Server\Util.cs" />
-    <Compile Include="Dialogs\SplitStringDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dialogs\SplitStringDialog.Designer.cs">
-      <DependentUpon>SplitStringDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="RcbActivateParams.cs" />
-    <Compile Include="Dialogs\AboutDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dialogs\AboutDialog.Designer.cs">
-      <DependentUpon>AboutDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="SCLServer.cs" />
     <Compile Include="SCL_Parser\SCLParse.cs" />
     <Compile Include="StringToDataConverter.cs" />
@@ -268,32 +206,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddNVLView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\AddNVLView.Designer.cs">
-      <DependentUpon>AddNVLView.cs</DependentUpon>
-    </Compile>
     <Compile Include="CommAddress.cs" />
-    <Compile Include="Dialogs\CommandDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dialogs\CommandDialog.Designer.cs">
-      <DependentUpon>CommandDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="CommandParams.cs" />
-    <Compile Include="Dialogs\ConnParamDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dialogs\ConnParamDialog.Designer.cs">
-      <DependentUpon>ConnParamDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Dialogs\RcbActivateDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dialogs\RcbActivateDialog.Designer.cs">
-      <DependentUpon>RcbActivateDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="Docking\AutoHideStripBase.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -475,7 +389,6 @@
     <Compile Include="HexBox\MemoryDataBlock.cs" />
     <Compile Include="HexBox\NativeMethods.cs" />
     <Compile Include="HexBox\Util.cs" />
-    <Compile Include="Iec61850Controller.cs" />
     <Compile Include="Iec61850Model.cs" />
     <Compile Include="IsoLayers.cs" />
     <Compile Include="MMSCapture.cs" />
@@ -485,12 +398,6 @@
     <Compile Include="FileTransferState.cs" />
     <Compile Include="IniFileManager.cs" />
     <Compile Include="NodeFile.cs" />
-    <Compile Include="Dialogs\EditValue.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dialogs\EditValue.Designer.cs">
-      <DependentUpon>EditValue.cs</DependentUpon>
-    </Compile>
     <Compile Include="IsoAcse.cs" />
     <Compile Include="IsoConnectionParameters.cs" />
     <Compile Include="IsoCotp.cs" />
@@ -623,51 +530,6 @@
     <Compile Include="TreeViewAdv\Tree\TreeViewAdvCancelEventArgs.cs" />
     <Compile Include="TreeViewAdv\Tree\TreeViewAdvEventArgs.cs" />
     <Compile Include="TreeViewAdv\Tree\TreeViewRowDrawEventArgs.cs" />
-    <Compile Include="Views\CaptureView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\CaptureView.Designer.cs">
-      <DependentUpon>CaptureView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PollView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\PollView.Designer.cs">
-      <DependentUpon>PollView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ReportsView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\ReportsView.Designer.cs">
-      <DependentUpon>ReportsView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\WatchDataView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\WatchDataView.Designer.cs">
-      <DependentUpon>WatchDataView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\IedDataView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\IedDataView.Designer.cs">
-      <DependentUpon>IedDataView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\IedTreeView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\IedTreeView.Designer.cs">
-      <DependentUpon>IedTreeView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\LogView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\LogView.Designer.cs">
-      <DependentUpon>LogView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MyListView.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="NodeVL.cs" />
     <Compile Include="NodeFC.cs" />
     <Compile Include="NodeData.cs" />
@@ -1165,65 +1027,9 @@
     <Compile Include="Scsm_MMS_Worker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IsoTpkt.cs" />
-    <Compile Include="Views\MainWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\MainWindow.Designer.cs">
-      <DependentUpon>MainWindow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MyDataGridView.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Views\SCLView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\SCLView.Designer.cs">
-      <DependentUpon>SCLView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\WindowManager.cs" />
     <Compile Include="WriteQueueElement.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Dialogs\AboutDialog.resx">
-      <DependentUpon>AboutDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\AutoUpdateStoppedDialog.resx">
-      <DependentUpon>AutoUpdateStoppedDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\ControllableSignalsDialog.resx">
-      <DependentUpon>ControllableSignalsDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\FindForm.resx">
-      <DependentUpon>FindForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Goose\GooseControl.resx">
-      <DependentUpon>GooseControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Goose\GooseDataeEdit.resx">
-      <DependentUpon>GooseDataeEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Goose\GooseExplorer.resx">
-      <DependentUpon>GooseExplorer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Goose\GooseSender.resx">
-      <DependentUpon>GooseSender.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\AddNVLView.resx">
-      <DependentUpon>AddNVLView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\CommandDialog.resx">
-      <DependentUpon>CommandDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\ConnParamDialog.resx">
-      <DependentUpon>ConnParamDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\RcbActivateDialog.resx">
-      <DependentUpon>RcbActivateDialog.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\SplitStringDialog.resx">
-      <DependentUpon>SplitStringDialog.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Docking\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
@@ -1245,9 +1051,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>StringsVS2003.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\EditValue.resx">
-      <DependentUpon>EditValue.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="HexBox\HexBox.resx">
       <DependentUpon>HexBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -1265,34 +1068,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TreeViewAdv\Tree\TreeViewAdv.resx">
       <DependentUpon>TreeViewAdv.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\CaptureView.resx">
-      <DependentUpon>CaptureView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\PollView.resx">
-      <DependentUpon>PollView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ReportsView.resx">
-      <DependentUpon>ReportsView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\WatchDataView.resx">
-      <DependentUpon>WatchDataView.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\IedDataView.resx">
-      <DependentUpon>IedDataView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\IedTreeView.resx">
-      <DependentUpon>IedTreeView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\LogView.resx">
-      <DependentUpon>LogView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\MainWindow.resx">
-      <DependentUpon>MainWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\SCLView.resx">
-      <DependentUpon>SCLView.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

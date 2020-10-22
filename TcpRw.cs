@@ -115,6 +115,10 @@ namespace IEDExplorer
             TcpState tcps = (TcpState)ar.AsyncState;
             try
             {
+                if (tcps.workSocket == null)
+                {
+                    throw new Exception("Double closing TCP connection.");
+                }
                 // Complete the connection.
                 tcps.workSocket.EndConnect(ar);
 

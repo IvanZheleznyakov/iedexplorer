@@ -385,6 +385,8 @@ namespace IEDExplorer
 
         static Env _env = Env.getEnv();
 
+        public bool ReportsRunning { get; set; } = false;
+
         public int ReceiveData(Iec61850State iecs)
         {
             if (iecs == null)
@@ -917,7 +919,11 @@ namespace IEDExplorer
                                                 {
                                                     recursiveReadData(iecs, dataref, b, NodeState.Reported);
 
-                                                    if (_env.winMgr.ReportsRunning) createReportRecord(iecs, varName, b);
+                                                    //if (_env.winMgr.ReportsRunning) createReportRecord(iecs, varName, b);
+                                                    if (ReportsRunning)
+                                                    {
+                                                        createReportRecord(iecs, varName, b);
+                                                    }
                                                 }
                                             }
                                             datacnt++;
@@ -949,7 +955,12 @@ namespace IEDExplorer
                                                 if (list[i].Success != null)
                                                 {
                                                     recursiveReadData(iecs, dataref, nba[listmap[datacnt]], NodeState.Reported);
-                                                    if (_env.winMgr.ReportsRunning)
+                                                    //if (_env.winMgr.ReportsRunning)
+                                                    //{
+                                                    //    varName = nba[listmap[datacnt]].CommAddress.Domain + "/" + nba[listmap[datacnt]].CommAddress.Variable;
+                                                    //    createReportRecord(iecs, varName, nba[listmap[datacnt]]);
+                                                    //}
+                                                    if (ReportsRunning)
                                                     {
                                                         varName = nba[listmap[datacnt]].CommAddress.Domain + "/" + nba[listmap[datacnt]].CommAddress.Variable;
                                                         createReportRecord(iecs, varName, nba[listmap[datacnt]]);

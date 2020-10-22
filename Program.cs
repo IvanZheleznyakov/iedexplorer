@@ -37,15 +37,15 @@ namespace IEDExplorer
         static void Main()
         {
             string resPrefix = "IEDExplorer.Embed.";
-            string filename1 = "iec61850dotnet.dll";
-            string filename2 = "iec61850.dll";
+     //       string filename1 = "iec61850dotnet.dll";
+     //       string filename2 = "iec61850.dll";
             string filename3 = "PcapDotNet.Base.dll";
             string filename4 = "PcapDotNet.Core.dll";
             string filename5 = "PcapDotNet.Core.Extensions.dll";
             string filename6 = "PcapDotNet.Packets.dll";
 
-            EmbeddedAssembly.Load(resPrefix + filename1, filename1);
-            EmbeddedAssembly.Load(resPrefix + filename2, filename2);
+      //      EmbeddedAssembly.Load(resPrefix + filename1, filename1);
+      //      EmbeddedAssembly.Load(resPrefix + filename2, filename2);
             EmbeddedAssembly.Load(resPrefix + filename3, filename3);
             EmbeddedAssembly.Load(resPrefix + filename4, filename4);
             EmbeddedAssembly.Load(resPrefix + filename5, filename5);
@@ -57,10 +57,12 @@ namespace IEDExplorer
             Application.SetCompatibleTextRenderingDefault(false);
 
             Env env = new Env();
-            Application.Run(new Views.MainWindow());
+        //    Application.Run(new Views.MainWindow());
 
-            List<string> natives = new List<string>();
-            natives.Add(filename2);
+      /*      List<string> natives = new List<string>
+            {
+                filename2
+            };
             //natives.Add(filename4);
 
             foreach (string filename in natives)
@@ -83,7 +85,7 @@ namespace IEDExplorer
                     }
                     catch { }
                 }
-            }
+            }*/
         }
 
         static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)

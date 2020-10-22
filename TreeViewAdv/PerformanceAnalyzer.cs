@@ -8,7 +8,8 @@ namespace Aga.Controls
 	/// <summary>
 	/// Is used to analyze code performance
 	/// </summary>
-	public static class PerformanceAnalyzer
+	public 
+		class PerformanceAnalyzer
 	{
 		public class PerformanceInfo
 		{
