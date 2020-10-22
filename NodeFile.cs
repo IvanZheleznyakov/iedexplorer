@@ -102,6 +102,10 @@ namespace IEDExplorer
                 do
                 {
                     fn = "/" + nb.Name + fn;
+                    if (nb is NodeFile && (nb as NodeFile).isDir)
+                    {
+                        fn += "/";
+                    }
                     nb = nb.Parent;
                 }
                 while (nb is NodeFile);
