@@ -69,6 +69,10 @@ namespace IEDExplorer
                             return null;
                         }
                     }
+                    else if (b is NodeFile && IecAddress == "")
+                    {
+                        return b;
+                    }
                     else
                     {
                         string[] parts = IecAddress.Split(new char[] { '$' });

@@ -57,23 +57,27 @@ namespace IEDExplorer
 
         public void GetFile(NodeFile nfi)
         {
-         /*   CommAddress ad = new CommAddress();
+            CommAddress ad = new CommAddress();
             NodeBase[] ndarr = new NodeBase[1];
             ndarr[0] = nfi;
 
-            if((nfi is NodeFile)) {
-              NodeData nd = new NodeData("x");
-              nd.DataType = scsm_MMS_TypeEnum.visible_string;
-              nd.DataValue = nfi.Name;
-              EditValue ev = new EditValue(nd);
-              System.Windows.Forms.DialogResult r = ev.ShowDialog();
-              if(r == System.Windows.Forms.DialogResult.OK) {
-                ad.Variable = nd.StringValue;
+            if ((nfi is NodeFile))
+            {
+                NodeData nd = new NodeData("x");
+                nd.DataType = scsm_MMS_TypeEnum.visible_string;
+                nd.DataValue = nfi.Name;
+                //    EditValue ev = new EditValue(nd);
+                //      System.Windows.Forms.DialogResult r = ev.ShowDialog();
+                //if (r == System.Windows.Forms.DialogResult.OK)
+                //{
+                //    ad.Variable = nd.StringValue;
+                //    nfi.NameSet4Test(ad.Variable);
+                //}
+                ad.Variable = nfi.Name;
                 nfi.NameSet4Test(ad.Variable);
-              }
             }
             nfi.Reset();
-            iecs.Send(ndarr, ad, ActionRequested.OpenFile);*/
+            iecs.Send(ndarr, ad, ActionRequested.OpenFile);
         }
 
         public void FileDelete(NodeFile nfi)

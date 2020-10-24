@@ -387,6 +387,12 @@ namespace IEDExplorer
 
         public bool ReportsRunning { get; set; } = false;
 
+        public delegate void FileDirectoryRecieve(Iec61850State iecs);
+        public event FileDirectoryRecieve FileDirectoryReceivedEvent;
+
+        public delegate void FileReceive(Iec61850State iecs);
+        public event FileReceive FileReceivedEvent;
+
         public int ReceiveData(Iec61850State iecs)
         {
             if (iecs == null)
@@ -643,6 +649,8 @@ namespace IEDExplorer
             }
             else
                 iecs.logger.LogInfo("No file in FileDirectory PDU!!");
+
+            FileDirectoryReceivedEvent?.Invoke(iecs);
         }
 
         private void ReceiveFileOpen(Iec61850State iecs, FileOpen_Response fileopn)
@@ -669,6 +677,7 @@ namespace IEDExplorer
                 {
                     iecs.fstate = FileTransferState.FILE_COMPLETE;
                     (iecs.lastFileOperationData[0] as NodeFile).FileReady = true;
+                    FileReceivedEvent?.Invoke(iecs);
                 }
             }
         }

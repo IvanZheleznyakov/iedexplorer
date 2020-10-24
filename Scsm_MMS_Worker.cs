@@ -119,9 +119,12 @@ namespace IEDExplorer
             _waitHandles[4] = iecs.sendQueueWritten;
             //DateTime tout = null;
 
+
+
             CommAddress ad = new CommAddress();
             DateTime IdentifyTimeoutBase = new DateTime();
             TimeSpan IdentifyTimeout = new TimeSpan(0, 0, 5);   // 5 sec
+            iecs.logger.LogInfo("WORKERTHREAD PROC ON THREAD " + Thread.CurrentThread.ManagedThreadId.ToString());
 
             while (self._run)
             {
