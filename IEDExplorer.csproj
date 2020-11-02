@@ -177,6 +177,7 @@
     <Compile Include="Goose_ASN1_Model\TimeOfDay.cs" />
     <Compile Include="Goose_ASN1_Model\UtcTime.cs" />
     <Compile Include="Iec61850Controller.cs" />
+    <Compile Include="MMS_ASN1_Model\Conclude_ResponsePDU.cs" />
     <Compile Include="MyTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -684,8 +685,8 @@
     <Compile Include="MMS_ASN1_Model\ChangeAccessControl_Request.cs" />
     <Compile Include="MMS_ASN1_Model\ChangeAccessControl_Response.cs" />
     <Compile Include="MMS_ASN1_Model\Conclude_ErrorPDU.cs" />
+    <Compile Include="MMS_ASN1_Model\Conclude_Request.cs" />
     <Compile Include="MMS_ASN1_Model\Conclude_RequestPDU.cs" />
-    <Compile Include="MMS_ASN1_Model\Conclude_ResponsePDU.cs" />
     <Compile Include="MMS_ASN1_Model\ConfirmedServiceRequest.cs" />
     <Compile Include="MMS_ASN1_Model\ConfirmedServiceResponse.cs" />
     <Compile Include="MMS_ASN1_Model\Confirmed_ErrorPDU.cs" />

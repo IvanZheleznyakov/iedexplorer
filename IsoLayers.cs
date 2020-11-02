@@ -77,6 +77,16 @@ namespace IEDExplorer
             return 0;
         }
 
+        public int SendReleaseAcse(Iec61850State iecs)
+        {
+            byte[] b1 = new byte[1024];
+            int len = isoAcse.createReleaseRequestMessage(b1, 0);
+            b1.CopyTo(iecs.sendBuffer, IsoCotp.COTP_HDR_DT_SIZEOF + IsoTpkt.TPKT_SIZEOF);
+            iecs.sendBytes = len;
+            isoCotp.Send(iecs);
+            return 0;
+        }
+
         int SendData(Iec61850State iecs)
         {
             //fastSend(iecs);
