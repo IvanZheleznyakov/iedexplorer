@@ -12,26 +12,46 @@ using org.bn.coders;
 using org.bn.types;
 using org.bn;
 
-namespace MMS_ASN1_Model {
+namespace MMS_ASN1_Model
+{
 
 
     [ASN1PreparedElement]
-    
-        [ASN1Null ( Name = "Conclude-RequestPDU" )]
-    
-    public class Conclude_RequestPDU: IASN1PreparedElement {                    
 
-            public void initWithDefaults()
-	    {
-	    }
-        // STATICHERE
-            private static IASN1PreparedElementData preparedData = CoderFactory.getInstance().newPreparedElementData(typeof(Conclude_RequestPDU));
-            public IASN1PreparedElementData PreparedData {
-            	get { return preparedData; }
-            }
+    [ASN1Null(Name = "Conclude-RequestPDU")]
 
+    public class Conclude_RequestPDU : IASN1PreparedElement
+    {
 
+        private Unsigned32 invokeID_;
 
+        [ASN1Element(Name = "invokeID", IsOptional = false, HasTag = false, HasDefaultValue = false)]
+
+        public Unsigned32 InvokeID
+        {
+            get { return invokeID_; }
+            set { invokeID_ = value; }
+        }
+
+        private ConfirmedServiceRequest service_;
+
+        [ASN1Element(Name = "service", IsOptional = false, HasTag = false, HasDefaultValue = false)]
+
+        public ConfirmedServiceRequest Service
+        {
+            get { return service_; }
+            set { service_ = value; }
+        }
+
+        public void initWithDefaults()
+        {
+        }
+
+        private static IASN1PreparedElementData preparedData = CoderFactory.getInstance().newPreparedElementData(typeof(Conclude_RequestPDU));
+        public IASN1PreparedElementData PreparedData
+        {
+            get { return preparedData; }
+        }
     }
-            
+
 }

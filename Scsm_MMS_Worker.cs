@@ -76,17 +76,26 @@ namespace IEDExplorer
 
         public void Stop()
         {
+            iecs.mms.SendConclude(iecs);
+            iecs.iso.SendReleaseAcse(iecs);
+            TcpRw.StopClient(iecs);
+            iecs.receiveDone.WaitOne(5000);
             Stop(false);
         }
+
         public void Stop(bool restart_enable)
         {
             restart_allowed = restart_enable;
+            
             if (_workerThread != null)
             {
                 (_waitHandles[3] as ManualResetEvent).Set();
                 _workerThread = null;
+                _run = false;
                 logger.LogInfo(String.Format("Communication to hostname = {0}, port = {1} stopped.", isoParameters.hostname, isoParameters.port));
             }
+
+            TcpRw.StopClient(iecs);
 
             //_env.winMgr.mainWindow.BeginInvoke((Action)delegate
             //{
@@ -203,10 +212,12 @@ namespace IEDExplorer
                                         if (_env.dataReadOnStartup)
                                         {
                                             iecs.logger.LogDebug("[IEC61850_READ_MODEL_DATA]");
-                                            CommAddress adr = new CommAddress();
-                                            adr.Domain = null;
-                                            adr.Variable = null;
-                                            adr.owner = null;
+                                            CommAddress adr = new CommAddress
+                                            {
+                                                Domain = null,
+                                                Variable = null,
+                                                owner = null
+                                            };
                                             NodeBase[] data = new NodeBase[1];
                                             // Issue reads by FC level
                                             data[0] = iecs.DataModel.ied.GetActualChildNode().GetActualChildNode().GetActualChildNode();
@@ -347,7 +358,7 @@ namespace IEDExplorer
             TcpRw.StopClient(iecs);
             //_env.winMgr.UnBindFromCapture(iecs);
             if(restart_allowed) {
-                restart_allowed = false;
+                Start();
                 try
                 {
                     //_env.winMgr.mainWindow.BeginInvoke((Action)delegate

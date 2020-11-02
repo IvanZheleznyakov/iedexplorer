@@ -1584,7 +1584,10 @@ namespace MMS_ASN1_Model {
             return this.getNameList_selected ;
         }
 
-        
+        public void selectConclude(Conclude_Request val)
+        {
+
+        }
 
 
         public void selectGetNameList (GetNameList_Request val) {

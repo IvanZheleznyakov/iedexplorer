@@ -102,6 +102,7 @@ namespace IEDExplorer
                     tcps.workSocket = null;
                     }
                 }
+                tcps.logger.LogInfo("SOCKET FINALLY RELEASED!!!");
             } 
             catch (Exception e)
             {

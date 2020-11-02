@@ -1730,8 +1730,39 @@ namespace IEDExplorer
             return 0;
         }
 
-
         /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+        public int SendConclude(Iec61850State iecs)
+        {
+            MMSpdu mymmspdu = new MMSpdu();
+            iecs.msMMSout = new MemoryStream();
+
+            Conclude_RequestPDU crreq = new Conclude_RequestPDU();
+            ConfirmedServiceRequest csrreq = new ConfirmedServiceRequest();
+            Conclude_Request cnreq = new Conclude_Request();
+
+            cnreq.initWithDefaults();
+
+            csrreq.selectConclude(cnreq);
+
+            crreq.InvokeID = new Unsigned32(InvokeID++);
+
+            crreq.Service = csrreq;
+
+            mymmspdu.selectConclude_RequestPDU(crreq);
+
+            encoder.encode<MMSpdu>(mymmspdu, iecs.msMMSout);
+
+            if (iecs.msMMSout.Length == 0)
+            {
+                iecs.logger.LogError("mms.SendIdentify: Encoding Error!");
+                return -1;
+            }
+
+            this.Send(iecs, mymmspdu, InvokeID, null);
+
+            return 0;
+        }
 
         public int SendIdentify(Iec61850State iecs)
         {
