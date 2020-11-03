@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 //using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace IEDExplorer
 {
@@ -151,6 +152,60 @@ namespace IEDExplorer
             return null;
         }
 
+        async Task PutTaskDelay(int millis)
+        {
+            await Task.Delay(millis);
+        }
+
+        public async void PrepareSendCommand(NodeBase data, CommandParams cPar, ActionRequested how)
+        {
+            if (cPar.SBOrun)
+            {
+                string sName = (cPar.CommandFlowFlag == CommandCtrlModel.Select_Before_Operate_With_Enhanced_Security) ? "SBOw" : "SBO";
+                NodeData d = (NodeData)data.Parent;
+                NodeData op = null, sel = null;
+                if (d != null)
+                {
+                    if (d.Name == "SBOw" || d.Name == "SBO")
+                    {
+                        sName = "Oper";
+                        sel = (NodeData)data;
+                    }
+                    else
+                        op = (NodeData)data;
+                    NodeBase dd = d.Parent;
+                    if (dd != null)
+                    {
+                        NodeData d2 = (NodeData)dd.FindChildNode(sName);
+                        if (d2 != null)
+                        {
+                            NodeData d3 = (NodeData)d2.FindChildNode("ctlVal");
+                            if (d3 != null)
+                            {
+                                if (op == null)
+                                    op = d3;
+                                else
+                                    sel = d3;
+                                SendCommand(sel, cPar, how);
+                                await PutTaskDelay(cPar.SBOtimeout);
+                                SendCommand(op, cPar, how);
+                            }
+                            else
+                                Logger.getLogger().LogWarning("Cannot send SBO command sequence, ctlVal not found in " + d2.IecAddress);
+                        }
+                        else
+                            Logger.getLogger().LogWarning("Cannot send SBO command sequence, " + sName + " not found in " + dd.IecAddress);
+                    }
+                    else
+                        Logger.getLogger().LogWarning("Cannot send SBO command sequence, null parent of " + d.IecAddress);
+                }
+                else
+                    Logger.getLogger().LogWarning("Cannot send SBO command sequence, null parent of " + data.IecAddress);
+            }
+            else
+                SendCommand(data, cPar, how);
+        }
+
         public void SendCommand(NodeBase data, CommandParams cPar, ActionRequested how)
         {
             if (data != null)
@@ -275,11 +330,13 @@ namespace IEDExplorer
 
         public static NodeData PrepareWriteData(NodeData data)
         {
-            NodeData nd = new NodeData(data.Name);
-            nd.DataType = data.DataType;
-            nd.DataValue = data.DataValue;
-            nd.DataParam = data.DataParam;
-            nd.Parent = data.Parent;
+            NodeData nd = new NodeData(data.Name)
+            {
+                DataType = data.DataType,
+                DataValue = data.DataValue,
+                DataParam = data.DataParam,
+                Parent = data.Parent
+            };
             return nd;
         }
 

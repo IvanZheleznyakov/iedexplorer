@@ -78,15 +78,13 @@ namespace IEDExplorer
         {
             iecs.mms.SendConclude(iecs);
             iecs.iso.SendReleaseAcse(iecs);
-            TcpRw.StopClient(iecs);
-            iecs.receiveDone.WaitOne(5000);
+            iecs.receiveDone.WaitOne(500);
             Stop(false);
         }
 
         public void Stop(bool restart_enable)
         {
             restart_allowed = restart_enable;
-            
             if (_workerThread != null)
             {
                 (_waitHandles[3] as ManualResetEvent).Set();
