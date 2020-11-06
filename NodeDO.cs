@@ -29,14 +29,6 @@ namespace IEDExplorer
     {
         private string _type = "";
 
-        public int SCL_ArraySize { get; set; }
-
-        public string SCL_Type
-        {
-            get { return _type; }
-            set { _type = value; }
-        }
-
         public string SCL_UpperDOName { get; set; }
 
         public NodeDO(string Name)

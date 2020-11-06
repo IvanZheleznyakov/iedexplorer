@@ -11,7 +11,6 @@ using MMS_ASN1_Model;
 using System.Globalization;
 using System.Threading;
 using org.mkulu.config;
-using IEDExplorer.Resources;
 using System.IO;
 
 namespace IEDExplorer
