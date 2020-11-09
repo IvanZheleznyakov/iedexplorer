@@ -73,7 +73,7 @@ namespace IEDExplorer
                     }
                     else
                     {
-                        string[] parts = IecAddress.Split(new char[] { '$' });
+                        string[] parts = IecAddress.Split(new char[] { '$', '.' });
                         for (int i = 0; i < parts.Length; i++)
                         {
                             if ((b = b.FindChildNode(parts[i])) == null)
@@ -95,6 +95,64 @@ namespace IEDExplorer
             string[] parts = CompleteIecAddress.Split(new char[] { '/' }, 2);
             if (parts.Length == 2)
                 return FindNodeByAddress(parts[0], parts[1], FindList);
+            return null;
+        }
+
+        public NodeBase FindNodeByAddressWithDots(string domain, string iecAddress, bool findList = false)
+        {
+            if (domain == null || iecAddress == null)
+                return null;
+            NodeBase b = this.FindChildNode(domain);
+            if (b != null)
+            {
+                if (findList)
+                {
+                    if ((b = b.FindChildNode(iecAddress)) == null)
+                    {
+                        return null;
+                    }
+                }
+                else
+                {
+                    if (Name == "urcbs" || Name == "brcbs")
+                    {
+                        if ((b = b.FindChildNode(iecAddress)) == null)
+                        {
+                            return null;
+                        }
+                    }
+                    else if (b is NodeFile && iecAddress == "")
+                    {
+                        return b;
+                    }
+                    else
+                    {
+                        string[] parts = iecAddress.Split(new char[] { '.' });
+                        for (int i = 0; i < parts.Length; i++)
+                        {
+                            if ((b = b.FindChildNode(parts[i])) == null)
+                            {
+                                return null;
+                            }
+                        }
+                    }
+                }
+                return b;
+            }
+            return null;
+        }
+
+        public NodeBase FindNodeByAddressWithDots(string completeIecAddress, bool findList = false)
+        {
+            if (completeIecAddress == null)
+            {
+                return null;
+            }
+            string[] parts = completeIecAddress.Split(new char[] { '/' }, 2);
+            if (parts.Length == 2)
+            {
+                return FindNodeByAddressWithDots(parts[0], parts[1], findList);
+            }
             return null;
         }
 

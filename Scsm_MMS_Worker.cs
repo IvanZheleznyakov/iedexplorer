@@ -76,10 +76,14 @@ namespace IEDExplorer
 
         public void Stop()
         {
-            iecs.mms.SendConclude(iecs);
-            iecs.iso.SendReleaseAcse(iecs);
-            iecs.receiveDone.WaitOne(500);
-            Stop(false);
+            if (iecs != null)
+            {
+                iecs.mms.SendConclude(iecs);
+                iecs.iso.SendReleaseAcse(iecs);
+                iecs.receiveDone.WaitOne(500);
+
+                Stop(false);
+            }
         }
 
         public void Stop(bool restart_enable)

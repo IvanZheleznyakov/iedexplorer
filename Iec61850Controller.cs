@@ -24,8 +24,7 @@ namespace IEDExplorer
 
         public void FireNewReport(string rptdVarQualityLog, string rptdVarTimestampLog, string rptdVarPathLog, string rptdVarDescriptionLog, string rptdVarValueLog)
         {
-            if (NewReport != null)
-                NewReport(rptdVarQualityLog, rptdVarTimestampLog, rptdVarPathLog, rptdVarDescriptionLog, rptdVarValueLog);
+            NewReport?.Invoke(rptdVarQualityLog, rptdVarTimestampLog, rptdVarPathLog, rptdVarDescriptionLog, rptdVarValueLog);
         }
 
         public void DeleteNVL(NodeVL nvl)
